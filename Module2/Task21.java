@@ -1,3 +1,5 @@
+package Module2;
+
 public class Task21 {
 
     public static void main(String[] args) {
@@ -95,20 +97,22 @@ public class Task21 {
     // method for int
 
     static int maxPositive(int[] array) {
-        int maxPositive = array[0];
-        for (int i = 1; i < array.length; i++) {
+        int maxPositive = -1;
+        for (int i = 0; i < array.length; i++) {
             if (array[i] > maxPositive && array[i] >= 0)
                 maxPositive = array[i];
         }
+        if(maxPositive == -1) System.out.println("There is no positive elements in an array");
         return maxPositive;
     }
     //method for double
     static double maxPositive(double[] arrayDouble) {
-        double maxPositive = arrayDouble[0];
-        for (int i = 1; i < arrayDouble.length; i++) {
+        double maxPositive = -1.0;
+        for (int i = 0; i < arrayDouble.length; i++) {
             if (arrayDouble[i] > maxPositive && arrayDouble[i] >= 0)
                 maxPositive = arrayDouble[i];
         }
+        if(maxPositive == -1.0) System.out.println("There is no positive elements in an array");
         return maxPositive;
     }
 
@@ -133,12 +137,12 @@ public class Task21 {
     //method for int
 
     static int modulus(int[] array) {
-        int modulus = array[0] % array[9];
+        int modulus = array[0] % array[array.length];
         return modulus;
     }
     //method for double
     static double modulus(double[] arrayDouble) {
-        double modulus = arrayDouble[0] % arrayDouble[9];
+        double modulus = arrayDouble[0] % arrayDouble[arrayDouble.length];
         return modulus;
     }
 
@@ -146,47 +150,29 @@ public class Task21 {
     //method for int
 
     static int secondLargest(int[] array) {
-        int largest,secondLargest;
+        int firstLargest,secondLargest;
 
-        if(array[0] > array[1]) {
-            largest = array[0];
-            secondLargest = array[1];
-        }
-        else {
-            largest = array[1];
-            secondLargest = array[0];
-        }
-        for(int i = 2; i < array.length; i++) {
-            if((array[i] <= largest) && array[i] > secondLargest) {
+        firstLargest = Task21.max(array);
+        if (firstLargest != array[0]) secondLargest = array[0];
+        else secondLargest = array[1];
+
+        for (int i = 0; i <array.length; i++) {
+            if (array[i] > secondLargest && array[i]!= firstLargest)
                 secondLargest = array[i];
-            }
-            if(array[i] > largest) {
-                secondLargest = largest;
-                largest = array[i];
-            }
         }
         return secondLargest;
     }
     //method for double
     static double secondLargest(double[] arrayDouble) {
-        double largest,secondLargest;
+        double firstLargest,secondLargest;
 
-        if(arrayDouble[0] > arrayDouble[1]) {
-            largest = arrayDouble[0];
-            secondLargest = arrayDouble[1];
-        }
-        else {
-            largest = arrayDouble[1];
-            secondLargest = arrayDouble[0];
-        }
-        for(int i = 2; i < arrayDouble.length; i++) {
-            if((arrayDouble[i] <= largest) && arrayDouble[i] > secondLargest) {
+        firstLargest = Task21.max(arrayDouble);
+        if (firstLargest != arrayDouble[0]) secondLargest = arrayDouble[0];
+        else secondLargest = arrayDouble[1];
+
+        for (int i = 0; i <arrayDouble.length; i++) {
+            if (arrayDouble[i] > secondLargest && arrayDouble[i]!= firstLargest)
                 secondLargest = arrayDouble[i];
-            }
-            if(arrayDouble[i] > largest) {
-                secondLargest = largest;
-                largest = arrayDouble[i];
-            }
         }
         return secondLargest;
     }
